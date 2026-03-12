@@ -36,9 +36,9 @@ const itemVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-12 lg:py-16 xl:py-20 relative">
+    <section id="skills" className="py-12 lg:py-16 xl:py-20 pt-20 sm:pt-0 relative">
       <div className="container mx-auto px-4 md:px-6 z-10 relative">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -49,7 +49,7 @@ export default function Skills() {
           <div className="w-20 h-1 bg-cyan-500 mx-auto rounded-full" />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -64,7 +64,7 @@ export default function Skills() {
                 </div>
                 <h3 className="text-xl font-bold">{category.category}</h3>
               </div>
-              
+
               <ul className="space-y-4">
                 {category.skills.map((skill, sIdx) => (
                   <li key={sIdx} className="flex font-medium text-slate-500 items-center">
@@ -77,7 +77,7 @@ export default function Skills() {
           ))}
         </motion.div>
       </div>
-      
+
       {/* Background flair */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-400/10 dark:bg-purple-600/10 blur-[100px] rounded-full pointer-events-none -z-10" />
     </section>

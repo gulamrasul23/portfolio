@@ -26,10 +26,10 @@ const edData = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-12 lg:py-16 xl:py-20 relative overflow-hidden">
+    <section id="education" className="py-12 lg:py-16 xl:py-20 pt-20 sm:pt-0 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -42,7 +42,7 @@ export default function Education() {
 
         <div className="max-w-3xl mx-auto">
           {edData.map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -51,12 +51,12 @@ export default function Education() {
               className="relative pl-0 mb-4 md:mb-8 last:mb-0"
             >
               <div className="md:flex items-center gap-4 md:gap-8 glass-card p-6 md:p-8 relative">
-                
+
                 {/* Timeline connector (hidden on small screens, shown on md using absolute positioning isn't needed here if we just use a card layout, let's keep it simple and clean with glass cards) */}
                 <div className="flex-shrink-0 mb-4 md:mb-0 hidden md:flex items-center justify-center w-16 h-16 rounded-full glass bg-green-500/10 text-green-500 dark:text-green-400">
                   <FiBookOpen size={28} />
                 </div>
-                
+
                 <div className="flex-1">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
                     <h3 className="text-2xl font-bold text-foreground">{item.degree}</h3>
@@ -69,7 +69,7 @@ export default function Education() {
                     {item.description}
                   </p>
                 </div>
-                
+
               </div>
             </motion.div>
           ))}

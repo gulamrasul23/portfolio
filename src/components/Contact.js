@@ -12,7 +12,7 @@ export default function Contact() {
     subject: "",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,20 +38,20 @@ export default function Contact() {
       const result = await response.json();
 
       if (result.success) {
-      
+
         Swal.fire({
           title: "Message Sent!",
           text: "Thank you for reaching out. I will get back to you soon.",
           icon: "success",
-          confirmButtonColor: "#f59e0b", 
+          confirmButtonColor: "#f59e0b",
           confirmButtonText: "Awesome!",
-          background: "rgba(255, 255, 255, 0.9)", 
+          background: "rgba(255, 255, 255, 0.9)",
           backdrop: "rgba(0,0,0,0.4)"
         });
-        
+
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-          
+
         Swal.fire({
           title: "Oops...",
           text: "Something went wrong! Please try again later.",
@@ -60,7 +60,7 @@ export default function Contact() {
         });
       }
     } catch (error) {
-      
+
       Swal.fire({
         title: "Error!",
         text: "Network issue. Please check your connection.",
@@ -73,10 +73,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-12 lg:py-16 xl:py-20 relative overflow-hidden">
+    <section id="contact" className="py-12 lg:py-16 xl:py-20 pt-20 sm:pt-0 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -88,9 +88,9 @@ export default function Contact() {
         </motion.div>
 
         <div className="grid md:grid-cols-5 gap-12 max-w-6xl mx-auto">
-          
+
           {/* Contact Info */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -142,7 +142,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -153,8 +153,8 @@ export default function Contact() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium ml-1">Your Name</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="name"
                     name="name"
                     value={formData.name}
@@ -166,8 +166,8 @@ export default function Contact() {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium ml-1">Email Address</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     id="email"
                     name="email"
                     value={formData.email}
@@ -178,11 +178,11 @@ export default function Contact() {
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-medium ml-1">Subject</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   id="subject"
                   name="subject"
                   value={formData.subject}
@@ -195,7 +195,7 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium ml-1">Message</label>
-                <textarea 
+                <textarea
                   id="message"
                   name="message"
                   value={formData.message}
@@ -208,7 +208,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-4">
-                <button 
+                <button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full md:w-auto px-8 py-3 rounded-xl bg-amber-500 text-white font-bold hover:bg-amber-600 disabled:bg-amber-500/50 disabled:cursor-not-allowed transition-colors shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2 group"

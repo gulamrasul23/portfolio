@@ -27,29 +27,50 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setIsOpen(false);
+
+    if (href === "/") {
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+
+      const targetId = href.replace("#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "py-3" : "py-5"
-        }`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "py-3" : "py-5"
+          }`}
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="glass rounded-full px-6 py-3 flex items-center justify-between">
-            <Link href="/" className="text-xl font-bold tracking-tight">
-              Dev<span className="text-blue-500">Portfolio</span>
-            </Link>
+            <div onClick={scrollToTop} className="text-xl font-bold tracking-tight flex items-center cursor-pointer">
+              <img src="./images/icon.png" alt="logo" className="w-8 h-7" />
+              <span className="text-blue-500">Portfolio</span>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               {links.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-sm font-medium hover:text-blue-500 transition-colors"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
               <ThemeToggle />
             </nav>
@@ -80,14 +101,14 @@ export default function Navbar() {
           >
             <nav className="flex flex-col items-center gap-8 text-2xl font-medium">
               {links.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="hover:text-blue-500 transition-colors"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </nav>
           </motion.div>
